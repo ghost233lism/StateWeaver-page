@@ -12,7 +12,8 @@ window.RESEARCH = {
       "name": "Xuying Zhang",
       "url": "https://zhangxuying1004.github.io/",
       "aff": [
-        2
+        2,
+        1
       ]
     },
     {
@@ -26,14 +27,14 @@ window.RESEARCH = {
       "name": "Haoran Li",
       "url": "https://jahnsonblack.github.io/",
       "aff": [
-        4
+        2
       ]
     },
     {
       "name": "Yanwen Ma",
       "url": "https://gelercat.com/",
       "aff": [
-        5
+        4
       ]
     },
     {
@@ -67,9 +68,8 @@ window.RESEARCH = {
   ],
   "affiliations": [
     "Nankai University",
-    "JD.com",
+    "Joy Future Academy, JD",
     "ShanghaiTech University",
-    "University of Science and Technology of China",
     "Beihang University"
   ],
   "paperUrl": null,
