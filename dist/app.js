@@ -50,8 +50,7 @@
   $$('[data-icon]').forEach((i) => i.replaceWith(icon(i.dataset.icon)));
   let lang = 0;
   try {
-    const pref = localStorage.getItem('stateweaver-language');
-    lang = pref ? Number(pref === 'zh') : Number(/^zh/i.test(navigator.language));
+    lang = Number(localStorage.getItem('stateweaver-language') === 'zh');
   } catch {}
   const T = (en, zh) => (lang ? zh : en),
     pair = (value) => (Array.isArray(value) ? value[lang] : value);
