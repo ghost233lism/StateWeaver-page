@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en"
+  ><head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#101216" /><title>StateWeaver — Film Workshop</title>
+    <meta
+      name="description"
+      content="Step inside StateWeaver’s generated films. Follow a story across shots, inspect the editing bench, and explore the research behind long-horizon video generation."
+    />
+    <link rel="preload" as="image" href="media/films/hero.webp" media="(min-width: 701px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="media/films/hero-small.webp" media="(max-width: 700px)" fetchpriority="high" /><link rel="icon" href="assets/mark.svg" /><link rel="stylesheet" href="assets/fonts.css" /><link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <script defer src="media-routing.js" data-media-base="" data-media-scope="exhibit"></script>
+    <script defer src="films.js"></script
+    ><script defer src="screening.js"></script
+    ><script defer src="research.js"></script
+    ><script defer src="mechanism.js"></script
+    ><script defer src="cinema.js"></script
+    ><script defer src="app.js"></script> </head
+  ><body>
+    <a class="skip" href="#bench" data-zh="跳到剪辑台">Skip to the editing bench</a>
+    <header class="mast">
+      <a class="brand" href="#screen" aria-label="StateWeaver">
+        <img src="assets/mark-light.svg" alt="" /><span>State<i>Weaver</i></span>
+      </a>
+      <nav class="nav" aria-label="Navigation">
+        <a href="#screen" class="current" data-zh="放映厅">Screening</a>
+        <a href="#bench" data-zh="剪辑台">Editing bench</a>
+        <a href="#films" data-zh="片库">Films</a>
+        <a href="#research" data-zh="研究">Research</a>
+      </nav>
+      <div class="headtools">
+        <button id="language" class="lang" aria-label="Switch language">EN / 中文</button>
+      </div>
+    </header>
+    <main
+      ><section id="screen" aria-labelledby="main-title"
+        ><div class="stage">
+          <div class="projector-glow"></div><div class="table-grid"></div
+          ><canvas id="mechanism" aria-hidden="true"></canvas>
+          <div class="rig" aria-hidden="true"
+            ><div id="world"><div id="ribbon"></div></div
+          ></div>
+          <div class="fold-object" aria-hidden="true"
+            ><div class="fold-model"
+              ><div class="fold-depth"></div><div class="fold-depth"></div
+              ><div class="fold-depth"></div><div class="fold-depth"></div
+              ><div class="fold-depth"></div
+              ><div class="fold-face"
+                ><img data-frame="media/films/hero-left.webp" class="fold-window first" alt="" /><img
+                  data-frame="media/films/hero-right.webp"
+                  class="fold-window last"
+                  alt="" /></div></div
+          ></div>
+          <div class="hero-copy">
+            <h1 id="main-title">State<i>Weaver</i></h1>
+            <p data-zh="多智能体协作，让故事状态随镜头延续。"
+              >Long-horizon video generation through coordinated story states.</p
+            >
+            <div class="hero-actions"
+              ><button class="action primary" id="hero-film"
+                ><i data-icon="play"></i><span data-zh="观看完整选段">Watch sequence</span></button
+              ><a href="#bench" class="hero-secondary"
+                ><i data-icon="strip"></i><span data-zh="进入剪辑台">Explore the cut</span></a
+              ></div
+            >
+          </div>
+          <div class="fold-caption"
+            ><span class="kicker" id="fold-film"></span
+            ><h2 data-zh="跟着镜头走。">Follow the cut.</h2
+            ><p data-zh="选一个人物或道具，看看它如何延续到下一镜。"
+              >Trace a character or a prop from one shot to the next.</p
+            ><a href="#bench" class="action hollow" data-zh="打开剪辑台">Open editing bench</a></div
+          >
+          <div class="transport"
+            ><div class="now"
+              ><span class="tiny reel-light" data-zh="正在放映">Now screening</span
+              ><span id="hero-film-name"></span></div
+            ><div class="playback"
+              ><button id="hero-toggle" class="circle" aria-label="Pause preview"
+                ><i data-icon="pause"></i></button
+              ><span id="hero-time" class="mono">00:00</span
+              ><input
+                id="hero-seek"
+                type="range"
+                min="0"
+                max="1000"
+                value="0"
+                aria-label="Preview time"
+              /><span id="hero-duration" class="mono">00:00</span></div
+            ><a href="#bench" id="unfold" class="scroll-prompt"
+              ><i data-icon="scroll"></i><span data-zh="滚动，展开胶片">Scroll to unfold</span></a
+            ></div
+          >
+        </div></section
+      >
+      <section id="bench" class="section bench" aria-labelledby="bench-title">
+        <div class="section-head"
+          ><div><h2 id="bench-title" data-zh="剪辑台">The editing bench</h2></div
+          ><p data-zh="选择一部作品，探索它的片场、记忆和资产。">Choose a film to explore its sets, memory and assets.</p></div
+        >
+        <div id="board-films" class="board-films" aria-label="Choose a production"></div>
+        <div id="studio-wrap" class="studio-wrap">
+          <div class="studio-bar"
+            ><div><i data-icon="layers"></i><span data-zh="制作画布">Production canvas</span></div
+            ><button id="studio-expand" class="studio-expand"
+              ><i data-icon="expand"></i><span data-zh="全屏查看">Full screen</span></button
+            ></div
+          >
+          <iframe
+            id="production-board"
+            title="StateWeaver production canvas"
+            data-src="studio/index.html"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+        <details id="shot-evidence" class="shot-evidence"
+          ><summary
+            ><span
+              ><i data-icon="strip"></i
+              ><span data-zh="镜头回放与分镜笔记">Shot playback and notes</span></span
+            ><span class="evidence-index" id="evidence-index"></span
+          ></summary>
+          <div class="console"
+            ><div class="monitor"
+              ><div class="monitor-screen" id="monitor-screen"
+                ><video id="bench-video" preload="none" playsinline></video></div
+              ><div class="segment-transport"
+                ><button id="segment-play" class="circle" aria-label="Play selected shot"
+                  ><i data-icon="play"></i></button
+                ><span id="segment-pos" class="mono">00:00</span
+                ><input
+                  id="segment-scrub"
+                  type="range"
+                  min="0"
+                  max="1000"
+                  value="0"
+                  aria-label="Selected shot playback time" /><span
+                  id="segment-len"
+                  class="mono"
+                ></span></div
+              ><div class="monitor-status"
+                ><span class="tiny" id="monitor-shot"></span
+                ><button id="shot-notes" class="note-trigger"
+                  ><i data-icon="layers"></i><span data-zh="分镜笔记">Shot notes</span></button
+                ></div
+              ></div
+            >
+            <aside class="track-panel"
+              ><span class="tiny" data-zh="追踪对象">Track an element</span
+              ><div id="tracks" class="tracks"></div
+              ><div class="shot-story" aria-live="polite"
+                ><span id="selected-time" class="tiny"></span><h3 id="shot-title"></h3
+                ><p id="shot-copy"></p></div
+              ><div class="shot-step"
+                ><button id="prev-shot" class="square" aria-label="Previous shot"
+                  ><i data-icon="prev"></i></button
+                ><span id="shot-count" class="mono"></span
+                ><button id="next-shot" class="square" aria-label="Next shot"
+                  ><i data-icon="next"></i></button></div
+            ></aside>
+            <div class="timeline"
+              ><div id="thumbs" class="thumbs" aria-label="Shots"></div
+              ><div class="scrubline"
+                ><i data-icon="strip"></i
+                ><input
+                  type="range"
+                  id="shot-slider"
+                  min="0"
+                  max="1"
+                  step="1"
+                  value="0"
+                  aria-label="Move along matched shots"
+                /><span class="tiny" data-zh="分镜">Shots</span></div
+              ></div
+            ></div
+          >
+        </details></section
+      >
+      <section id="films" class="section library" aria-labelledby="films-title"
+        ><div class="section-head"
+          ><div><h2 id="films-title" data-zh="精选影片">Selected Films</h2></div
+          ><span class="library-count tiny" id="library-count"></span></div
+        ><div class="gallery" id="gallery"></div
+      ></section>
+      <section id="research" class="research" aria-labelledby="research-title"
+        ><div class="research-inner"
+          ><div class="research-head"
+            ><div
+              ><span class="kicker" data-zh="研究">Research</span
+              ><h2 id="research-title">StateWeaver</h2><p class="paper-title" id="paper-title" lang="en"></p
+              ><p id="authors" lang="en"></p></div
+            ></div>
+          <div id="research-resources" class="research-resources" role="group" aria-label="Research resources"></div>
+          <nav class="research-tabs" aria-label="Research sections">
+            <button data-tab="overview" data-zh="摘要">Abstract</button>
+            <button data-tab="method" data-zh="方法">Method</button>
+            <button data-tab="citation" data-zh="引用">Citation</button>
+          </nav>
+          <div id="research-body" class="research-body"></div></div></section
+    ></main>
+    <footer class="end-credits">
+      <div class="credits-main">
+        <a class="brand credits-brand" href="#screen" aria-label="StateWeaver">
+          <img src="assets/mark-light.svg" alt="" loading="lazy" /><span>State<i>Weaver</i></span>
+        </a>
+        <nav class="credits-nav" aria-label="Footer navigation">
+          <a href="#screen"><img src="media/films/sun-chamber.webp" alt="" loading="lazy" /><span data-zh="放映厅">Screening room</span></a>
+          <a href="#bench"><img src="media/production/lunar-signal/03b.webp" alt="" loading="lazy" /><span data-zh="剪辑台">Editing bench</span></a>
+          <a href="#films"><img src="media/films/a-paper-flower.webp" alt="" loading="lazy" /><span data-zh="片库">Film library</span></a>
+          <a href="#research"><img src="media/research/method.webp" alt="" loading="lazy" /><span data-zh="研究">Research</span></a>
+        </nav>
+      </div>
+      <h3 class="credits-license">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">
+          <span class="cc-symbol" aria-hidden="true">CC</span>
+          <span lang="en">Creative Commons Attribution-NonCommercial 4.0 International</span>
+        </a>
+      </h3>
+    </footer>
+    <dialog id="film-dialog" class="film-dialog"
+      ><div class="dialog-head"
+        ><div><span class="tiny" id="dialog-kind"></span><h2 id="dialog-title"></h2></div
+        ><button class="close square" aria-label="Close" autofocus
+          ><i data-icon="close"></i></button></div
+      ><video id="film-player" preload="none" controls playsinline></video><p id="film-caption"></p
+      ><button id="film-to-board" class="note-trigger"
+        ><i data-icon="layers"></i
+        ><span data-zh="查看这部作品的制作画布">Open this film’s production canvas</span></button
+      ></dialog
+    >
+    <dialog id="notes-dialog" class="notes-dialog"
+      ><div class="dialog-head"
+        ><span class="tiny" data-zh="分镜笔记">Shot notes</span
+        ><button class="close square" aria-label="Close" autofocus
+          ><i data-icon="close"></i></button></div
+      ><div id="notes-body"></div
+    ></dialog>
+    <dialog id="figure-dialog" class="figure-dialog"
+      ><div class="dialog-head"
+        ><span class="tiny" data-zh="方法总览">Method overview</span
+        ><button class="close square" aria-label="Close" autofocus
+          ><i data-icon="close"></i></button></div
+      ><img alt="StateWeaver method overview" id="full-figure"
+    /></dialog>
+    <noscript>Enable JavaScript to explore the films and the editing bench.</noscript>
+  </body></html
+>

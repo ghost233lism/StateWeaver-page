@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">StateWeaver: Folded Film</title>
+  <desc id="desc">A continuous folded film strip with two balanced shot windows and orange connecting folds.</desc>
+  <defs>
+    <mask id="apertures" maskUnits="userSpaceOnUse" x="0" y="0" width="192" height="160">
+      <rect width="192" height="160" fill="white"/>
+      <rect x="60" y="35" width="104" height="90" rx="9" fill="black"/>
+      <rect x="18" y="34" width="22" height="30" rx="5" fill="black"/><rect x="18" y="96" width="22" height="30" rx="5" fill="black"/>
+    </mask>
+    <mask id="fold-seams" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">
+      <rect width="512" height="512" fill="white"/>
+      <rect x="252.5" y="58" width="7" height="176" rx="2" fill="black"/>
+      <rect x="252.5" y="278" width="7" height="176" rx="2" fill="black"/>
+    </mask>
+    <g id="shot-frame"><rect width="192" height="160" rx="14" fill="#172D54" mask="url(#apertures)"/></g>
+  </defs>
+  <g fill="#F28B36" mask="url(#fold-seams)"><path d="M264.66125498940704 58.198265900136974L439.33874501059296 159.00173409986303Q448 164 448 174L448 194Q448 204 439.1821535806531 208.7165225033716L327.8178464193469 268.2834774966284Q319 273 310.96646157042807 267.04498024347606L264.03353842957193 232.25501975652398Q256 226.3 256 216.3L256 63.2Q256 53.2 264.66125498940704 58.198265900136974Z"/><path d="M247.338745010593 453.80173409986304L72.66125498940701 352.99826590013697Q64 348 64 338L64 318Q64 308 72.81784641934692 303.2834774966284L184.18215358065308 243.7165225033716Q193 239 201.03353842957193 244.95501975652397L247.96646157042807 279.74498024347605Q256 285.7 256 295.7L256 448.8Q256 458.8 247.338745010593 453.80173409986304Z"/></g>
+  <use href="#shot-frame" transform="matrix(1 -.577 0 1 64 164)"/>
+  <use href="#shot-frame" transform="matrix(-1 .577 0 -1 448 348)"/>
+</svg>
