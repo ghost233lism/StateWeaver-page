@@ -72,7 +72,7 @@ window.RESEARCH = {
     "ShanghaiTech University",
     "Beihang University"
   ],
-  "paperUrl": null,
+  "paperUrl": "https://arxiv.org/abs/2611.34290",
   "bibtex": "@misc{jin2026stateweaver,\n  title = {{StateWeaver}: Multi-Agent Coordination of Story-State Transitions for Long-Horizon Video Generation},\n  author = {Jin, Modi and Zhang, Xuying and Guo, Yijing and Li, Haoran and Ma, Yanwen and Wang, Jing and Ge, Chenyu and Cheng, Ming-Ming and Huang, Haoyang},\n  year = {2026},\n  note = {Project manuscript}\n}",
   "abstract": [
     "Modern video foundation models generate high-quality short clips, but preserving long-video consistency and correctly depicting event-driven state changes remain challenging. Existing agentic workflows face these challenges because continual planning and repair accumulate context, while reference updates remain limited. We introduce StateWeaver, which combines Active States and Hierarchical Collaboration to connect review-driven visual reference updates with cross-shot state inheritance. Active States translate state discrepancies identified during review into concrete visual asset requirements that guide reference construction, validation, and regeneration, preserving identity and already-correct content while repairing target attributes. Confirmed generation results are linked to the corresponding asset states, story time, and reference versions for verification and reuse by subsequent shots. Hierarchical Collaboration isolates execution contexts by task, clip, and repair round, and uses hierarchical memory to organize this process across multiple sets. Across multiple benchmarks, StateWeaver outperforms existing methods and produces long videos with sustained cross-shot consistency under predefined and autonomously planned storyboards.",
@@ -102,7 +102,7 @@ window.RESEARCH = {
     }
   ],
   "resources": {
-    "paper": null,
+    "paper": "https://arxiv.org/abs/2611.34290",
     "chinese": null,
     "code": null,
     "demo": "#bench",
