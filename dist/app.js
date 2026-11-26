@@ -71,6 +71,7 @@
     benchWasPlaying = false;
   const benchPlayer = $('#bench-video'),
     filmPlayer = $('#film-player');
+  const demoDialog = $('#demo-dialog'), demoPlayer = $('#demo-player');
   const captionStrings = $$('[data-zh]').map((n) => ({ n, en: n.textContent, zh: n.dataset.zh }));
   const allMatching = () =>
     bench.shots
@@ -480,6 +481,17 @@
     d.showModal();
     cinema.reconcile();
   }
+  function loadDemo(playing, time = 0) {
+    demoPlayer.src = pair(paper.resources.demo);
+    demoPlayer.load();
+    if (time > 0) demoPlayer.currentTime = time;
+    if (playing) demoPlayer.play().catch(() => {});
+  }
+  function openDemo() {
+    demoPlayer.poster = films[0].poster;
+    openDialog(demoDialog);
+    loadDemo(true);
+  }
   function openFilm(i) {
     activeFilm = i;
     const f = films[i];
@@ -563,11 +575,13 @@
       }
     };
     d.addEventListener('close', () => {
-      for (const v of d.querySelectorAll('video')) v.pause();
-      if (d.id === 'film-dialog') {
-        filmPlayer.removeAttribute('src');
-        filmPlayer.load();
+      if (d.open) return;
+      for (const video of d.querySelectorAll('video')) {
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
       }
+      if (d === demoDialog) $('#demo-trigger').focus({ preventScroll: true });
       if (benchWasPlaying) benchPlayer.play().catch(() => {});
       benchWasPlaying = false;
       cinema.reconcile();
@@ -612,10 +626,19 @@
     ];
     $('#research-resources').replaceChildren(...items.map(([key, symbol, label]) => {
       const href = pair(resources[key]);
-      const control = el(href ? 'a' : 'button', 'resource-link');
+      const isDemo = key === 'demo';
+      const control = el(href && !isDemo ? 'a' : 'button', 'resource-link');
       control.append(icon(symbol), el('span', '', label));
       if (!href) {
         control.disabled = true;
+        return control;
+      }
+      if (isDemo) {
+        control.type = 'button';
+        control.id = 'demo-trigger';
+        control.setAttribute('aria-haspopup', 'dialog');
+        control.setAttribute('aria-controls', 'demo-dialog');
+        control.onclick = openDemo;
         return control;
       }
       control.href = href;
@@ -721,6 +744,7 @@
     renderResearch();
     cinema.refresh();
     if ($('#notes-dialog').open) renderNotes();
+    if (demoDialog.open) loadDemo(!demoPlayer.paused, demoPlayer.currentTime);
   }
   function changeLanguage() {
     lang = lang ? 0 : 1;

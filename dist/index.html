@@ -10,7 +10,7 @@
     <link rel="preload" as="image" href="media/films/hero.webp" media="(min-width: 701px)" fetchpriority="high" />
     <link rel="preload" as="image" href="media/films/hero-small.webp" media="(max-width: 700px)" fetchpriority="high" /><link rel="icon" href="assets/mark.svg" /><link rel="stylesheet" href="assets/fonts.css" /><link
       rel="stylesheet"
-      href="style.css"
+      href="style.css?v=demo-dialog"
     />
     <script defer src="media-routing.js" data-media-base="" data-media-scope="exhibit"></script>
     <script defer src="films.js"></script
@@ -18,7 +18,7 @@
     ><script defer src="research.js?v=demo-v5"></script
     ><script defer src="mechanism.js"></script
     ><script defer src="cinema.js"></script
-    ><script defer src="app.js?v=demo-v5"></script> </head
+    ><script defer src="app.js?v=demo-dialog"></script> </head
   ><body>
     <a class="skip" href="#bench" data-zh="跳到剪辑台">Skip to the editing bench</a>
     <header class="mast">
@@ -232,6 +232,13 @@
         ><span data-zh="查看这部作品的制作画布">Open this film’s production canvas</span></button
       ></dialog
     >
+    <dialog id="demo-dialog" class="film-dialog demo-dialog" aria-labelledby="demo-title">
+      <div class="dialog-head">
+        <h2 id="demo-title" data-zh="StateWeaver 演示视频">StateWeaver Demo</h2>
+        <button type="button" class="close square" aria-label="Close" autofocus><i data-icon="close"></i></button>
+      </div>
+      <video id="demo-player" aria-labelledby="demo-title" controls playsinline preload="metadata"></video>
+    </dialog>
     <dialog id="notes-dialog" class="notes-dialog"
       ><div class="dialog-head"
         ><span class="tiny" data-zh="分镜笔记">Shot notes</span
