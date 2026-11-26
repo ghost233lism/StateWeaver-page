@@ -611,7 +611,7 @@
       ['poster', 'poster', 'Poster'],
     ];
     $('#research-resources').replaceChildren(...items.map(([key, symbol, label]) => {
-      const href = resources[key];
+      const href = pair(resources[key]);
       const control = el(href ? 'a' : 'button', 'resource-link');
       control.append(icon(symbol), el('span', '', label));
       if (!href) {

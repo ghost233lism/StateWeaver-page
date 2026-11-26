@@ -105,7 +105,10 @@ window.RESEARCH = {
     "paper": "https://arxiv.org/abs/2611.34290",
     "chinese": null,
     "code": "https://github.com/ghost233lism/StateWeaver",
-    "demo": "#bench",
+    "demo": [
+      "https://huggingface.co/datasets/ghost233lism/stateweaver-film-workshop-media/resolve/dd4482203e01a4c5759558f3f6d5a4801f461b33/demo/StateWeaver-EN-v5.mp4",
+      "https://huggingface.co/datasets/ghost233lism/stateweaver-film-workshop-media/resolve/dd4482203e01a4c5759558f3f6d5a4801f461b33/demo/StateWeaver-ZH-v5.mp4"
+    ],
     "poster": null
   }
 };
