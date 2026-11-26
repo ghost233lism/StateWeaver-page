@@ -104,7 +104,7 @@ window.RESEARCH = {
   "resources": {
     "paper": "https://arxiv.org/abs/2611.34290",
     "chinese": null,
-    "code": null,
+    "code": "https://github.com/ghost233lism/StateWeaver",
     "demo": "#bench",
     "poster": null
   }
